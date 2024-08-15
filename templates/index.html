@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Website Mockup Generator</title>
+    <link href="static/style.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <div class="cont">
+      <h1>Website Mockup Generator</h1>
+      <form action="{{ url_for('generate_mockup') }}" method="post">
+        <input type="text" id="websiteAddress" name="websiteAddress" placeholder="Enter website">
+        <div class="color_cont">
+          <div id="color_demo"></div>
+          <input type="text" id="bgColor" name="bgColor" value="b6b308">
+        </div>
+        <button type="submit">Create Mockup</button>
+      </form>
+      <div id="loading" class="loading">Loading...</div>
+      {% if request.args.get('mockup') %}
+      <h3>Generated Mockup:</h3>
+      <img id="resultImg" src="{{ url_for('mockup', filename=request.args.get('mockup')) }}">
+      <a id="Download" href="{{ url_for('mockup', filename=request.args.get('mockup')) }}" download>Download</a>
+      {% endif %}
+      <br>
+      <a href="/mockups">View Old Mockups</a>
+    </div>
+    <script src="static/script.js"></script>
+  </body>
+</html>

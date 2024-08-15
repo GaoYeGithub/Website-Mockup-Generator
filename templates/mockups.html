@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>View Mockups</title>
+    <link href="static/style.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <div class="cont">
+      <h1>Mockup Gallery</h1>
+      <div class="gallery">
+        {% for mockup in mockups %}
+        <div class="gallery-item">
+          <a href="{{ url_for('mockup', filename=mockup) }}" target="_blank">
+            <img src="{{ url_for('mockup', filename=mockup) }}" alt="Mockup {{ loop.index }}">
+          </a>
+        </div>
+        {% endfor %}
+        <br>
+        <a href="/">Back to Generator</a>
+      </div>
+  </body>
+</html>
